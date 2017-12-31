@@ -7,7 +7,8 @@ class BookShelf extends Component {
     static propTypes = {
         shelfName: PropTypes.string.isRequired,
         shelfValue: PropTypes.string.isRequired,
-        books: PropTypes.array.isRequired
+        books: PropTypes.array.isRequired,
+        bookUpdate: PropTypes.func.isRequired
     }
     render(){
         return(
@@ -19,6 +20,8 @@ class BookShelf extends Component {
                             <Book 
                                 key={book.id}
                                 book={book}
+                                bookUpdate={this.props.bookUpdate}
+                                shelf={this.props.shelfValue}
                             />
                         )}
                     </ol>

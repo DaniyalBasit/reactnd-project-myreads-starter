@@ -10,10 +10,19 @@ class BooksApp extends Component {
     books: []
   }
   componentDidMount(){
-      BooksAPI.getAll().then((books) => {
-          this.setState({ books })
-      })
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+    })
   }
+
+  onBookUpdate = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(
+      BooksAPI.getAll().then((books) => {
+        this.setState({ books })
+      })
+    )  
+  }
+
   render() {
     const books = this.state.books
     return (
@@ -22,7 +31,10 @@ class BooksApp extends Component {
           <SearchPage books={books} />
         )}/>
         <Route exact path='/' render={()=>(
-          <ListBooks books={books}/>
+          <ListBooks 
+            books={books}
+            bookUpdate={this.onBookUpdate}
+          />
         )}/>
       </div>
     )

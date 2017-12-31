@@ -7,10 +7,11 @@ import BookShelf from './BookShelf'
 class ListBooks extends Component{
     static propTypes = {
         books: PropTypes.array.isRequired,
+        bookUpdate: PropTypes.func.isRequired
     }
 
     state = {
-        shelf: ["wantToRead", "currentlyReading", "read"] 
+        shelf: ["wantToRead", "currentlyReading", "read"]
     }
 
     shelfBooks = (shelf) => {
@@ -51,6 +52,7 @@ class ListBooks extends Component{
                                 shelfValue={name}
                                 shelfName={this.shelfName(name)}
                                 books={this.shelfBooks(name)}
+                                bookUpdate={this.props.bookUpdate}
                             />
                         )}
                     </div>
