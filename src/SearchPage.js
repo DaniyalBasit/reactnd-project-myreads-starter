@@ -6,7 +6,19 @@ import Book from './Book'
 class SearchPage extends Component{
     static propTypes = {
         books: PropTypes.array.isRequired,
+        bookUpdate: PropTypes.func.isRequired,
+        searchBooks: PropTypes.func.isRequired
     }
+
+    state = {
+        input: ''
+    }
+
+    handleChange(event) {
+        this.setState({input: event.target.value})
+        this.props.searchBooks(event.target.value)
+    }
+
     render() {
         return (
             <div className="search-books">
@@ -21,7 +33,7 @@ class SearchPage extends Component{
                         However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                         you don't find a specific author or title. Every search is limited by search terms.
                     */}
-                    <input type="text" placeholder="Search by title or author"/>
+                    <input onChange={this.handleChange.bind(this)} type="text" placeholder="Search by title or author"/>
         
                     </div>
                 </div>
@@ -31,6 +43,7 @@ class SearchPage extends Component{
                             <Book 
                                 key={book.id}
                                 book={book}
+                                bookUpdate={this.props.bookUpdate}
                             />
                         )}
                     </ol>

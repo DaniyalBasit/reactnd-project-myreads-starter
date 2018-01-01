@@ -23,12 +23,22 @@ class BooksApp extends Component {
     )  
   }
 
+  onSearchBooks = (query) => {
+    BooksAPI.search(query).then((books) => {
+      this.setState({ books })
+    })
+  }
+
   render() {
     const books = this.state.books
     return (
       <div className="app">
         <Route exact path='/search' render={()=>(
-          <SearchPage books={books} />
+          <SearchPage 
+            books={books}
+            bookUpdate={this.onBookUpdate}
+            searchBooks={this.onSearchBooks}
+          />
         )}/>
         <Route exact path='/' render={()=>(
           <ListBooks 
