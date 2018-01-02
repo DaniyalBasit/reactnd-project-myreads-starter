@@ -21,7 +21,6 @@ class BookShelf extends Component {
                                 key={book.id}
                                 book={book}
                                 bookUpdate={this.props.bookUpdate}
-                                shelf={this.props.shelfValue}
                             />
                         )}
                     </ol>
