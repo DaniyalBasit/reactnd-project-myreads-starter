@@ -25,6 +25,7 @@ class BooksApp extends Component {
 
   onSearchBooks = (query) => {
     BooksAPI.search(query).then((books) => {
+      console.log(books)
       this.setState({ books })
     })
   }
