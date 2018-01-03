@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function Book (props) {  
+function Book (props) {
     return(
         <li>
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.book.imageLinks.smallThumbnail})` }}></div>
                     <div className="book-shelf-changer">
-                        <select onChange={(event) => {props.bookUpdate(props.book, event.target.value)}} value={props.book.shelf}>
-                            <option value="none" disabled>Move to...</option>
+                        <select onChange={(event) => {props.bookUpdate(props.book, event.target.value)}} value={props.setShelf(props.book)}>
+                            <option value="" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>
@@ -29,7 +29,8 @@ function Book (props) {
 
 Book.propTypes = {
     book: PropTypes.object.isRequired,
-    bookUpdate: PropTypes.func.isRequired
+    bookUpdate: PropTypes.func.isRequired,
+    setShelf: PropTypes.func.isRequired
 }
 
 export default Book

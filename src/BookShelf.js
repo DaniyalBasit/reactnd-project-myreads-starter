@@ -14,6 +14,7 @@ function BookShelf (props) {
                             key={book.id}
                             book={book}
                             bookUpdate={props.bookUpdate}
+                            setShelf={props.setShelf}
                         />
                     )}
                 </ol>
@@ -26,7 +27,8 @@ BookShelf.propTypes = {
     shelfName: PropTypes.string.isRequired,
     shelfValue: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
-    bookUpdate: PropTypes.func.isRequired
+    bookUpdate: PropTypes.func.isRequired,
+    setShelf: PropTypes.func.isRequired
 }
 
 export default BookShelf
