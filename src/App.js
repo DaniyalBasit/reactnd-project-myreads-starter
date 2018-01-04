@@ -46,7 +46,7 @@ class BooksApp extends Component {
   }
 
   setBookShelf = (userBook) => {
-    let book = this.state.books.filter((book) => this.prevState.books.includes(book)).find((lishBook) => {return lishBook === userBook})
+    let book = this.prevState.books.find((listBook) => {return listBook.id === userBook.id})
     return book !== undefined ? (book.shelf) : ("none")
   }
 
